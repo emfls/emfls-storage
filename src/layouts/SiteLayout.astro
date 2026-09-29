@@ -1,0 +1,71 @@
+---
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const siteName = 'EMFLS Storage';
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://storage.emfls.com').href;
+const fullTitle = `${title} | ${siteName}`;
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">본문 바로가기</a>
+    <header class="site-header">
+      <div class="header-inner page-width">
+        <a class="wordmark" href="/" aria-label="EMFLS Storage 홈">
+          <span class="wordmark-name">EMFLS</span>
+          <span class="wordmark-detail">STORAGE SYSTEMS</span>
+        </a>
+        <nav class="primary-nav" aria-label="주 메뉴">
+          <a href="/#workflow">정리 순서</a>
+          <a href="/#spaces">공간별 보기</a>
+          <a href="/about/">사이트 소개</a>
+          <a href="/contact/">문의</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content"><slot /></main>
+    <footer class="site-footer">
+      <div class="footer-inner page-width">
+        <div class="footer-about">
+          <a class="wordmark" href="/">
+            <span class="wordmark-name">EMFLS</span>
+            <span class="wordmark-detail">STORAGE SYSTEMS</span>
+          </a>
+          <p>분류하고, 자리를 정하고, 오래 유지하는 수납 방법을 살펴봅니다.</p>
+        </div>
+        <nav class="footer-nav" aria-label="사이트 정보">
+          <a href="/about/">소개</a>
+          <a href="/editorial-policy/">콘텐츠 기준</a>
+          <a href="/privacy/">개인정보</a>
+          <a href="/contact/">문의</a>
+        </nav>
+        <small class="footer-note">일반적인 정리 참고 자료입니다. 제품별 조건과 안전 안내는 해당 제조사 정보를 확인하세요.</small>
+      </div>
+    </footer>
+  </body>
+</html>
