@@ -8,13 +8,21 @@
       and the public IndexNow key file.
 - [x] Add build-output acceptance checks for routes and search assets.
 - [x] Pass the local Astro check, static build, and acceptance suite.
-- [ ] Deploy this Foundation revision and verify actual Production pages.
-- [ ] Submit the sitemap in Google Search Console when the existing session
-      allows it without a login/2FA/approval stop.
-- [ ] Register/submit in Naver Search Advisor under the same safe-session rule.
-- [ ] Submit the live sitemap URLs to IndexNow and record the response meaning.
-- [ ] Check Daum registration/status availability and record evidence or blocker.
-- [ ] Synchronize final evidence to Site Registry and the Site Control Page.
+- [x] Deploy this Foundation revision to Production (`04db2570` for `f43649e`).
+- [x] Register and verify `https://storage.emfls.com/` in Google Search Console;
+      submit `https://storage.emfls.com/sitemap.xml` (processing/indexing pending).
+- [ ] Naver registration/sitemap: **BLOCKED** because Search Advisor requires
+      an authenticated account session; stopped before login.
+- [ ] IndexNow: key file is deployed and the five canonical URLs were submitted
+      twice; both responses were HTTP 202, key validation pending. Do not claim
+      accepted/indexed; revalidate later through an allowed path.
+- [x] Daum public lookup: site is `미등록 사이트`; checked registration path.
+      Request not submitted because it requires applicant name/email and two
+      consent checkboxes.
+- [x] Synchronize provider/evidence statuses to Site Registry, Site Control
+      Page, and Handoff Index current status.
+- [ ] Confirm live robots/sitemap contents and actual HTTP 404 status when an
+      allowed verification path is available.
 
 ## Deferred by the current owner directive
 
